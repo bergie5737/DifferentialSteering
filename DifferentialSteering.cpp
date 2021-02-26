@@ -13,7 +13,7 @@ DifferentialSteering::DifferentialSteering() {
  *
  * @param fPivYLimit: Threshold. Is measured in units on the Y-axis away from the X-axis (Y=0).
  *                    A greater value will assign more of the joystick's range to pivot actions.
- *                    Allowable range: (0..+127).
+ *                    Allowable range: (0..+500).
  */
 void DifferentialSteering::begin(int fPivYLimit) {
     m_fPivYLimit = fPivYLimit;
@@ -22,13 +22,13 @@ void DifferentialSteering::begin(int fPivYLimit) {
 /**
  * Compute differential steering from (x,y) values.
  *
- * @param XValue: X value in [-127, 127] range.
- * @param YValue: Y value in [-127, 127] range.
+ * @param XValue: X value in [-500, 500] range.
+ * @param YValue: Y value in [-500, 500] range.
  */
 void DifferentialSteering::computeMotors(int XValue, int YValue) {
-    float   nMotPremixL = 0;    // Motor (left)  premixed output        (-127..+127)
-    float   nMotPremixR = 0;    // Motor (right) premixed output        (-127..+127)
-    int     nPivSpeed = 0;      // Pivot Speed                          (-127..+127)
+    float   nMotPremixL = 0;    // Motor (left)  premixed output        (-500..+500)
+    float   nMotPremixR = 0;    // Motor (right) premixed output        (-500..+500)
+    int     nPivSpeed = 0;      // Pivot Speed                          (-500..+500)
     float   fPivScale = 0;      // Balance scale b/w drive and pivot    (   0..1   )
 
     // Calculate Drive Turn output due to Joystick X input
@@ -60,7 +60,7 @@ void DifferentialSteering::computeMotors(int XValue, int YValue) {
 /*
  * Returns the value of the left motor computed in computeMotors method.
  *
- * @return left computed motor, in [-127, 127] range.
+ * @return left computed motor, in [-500, 500] range.
  */
 int DifferentialSteering::computedLeftMotor() {
     return m_leftMotor;
@@ -69,7 +69,7 @@ int DifferentialSteering::computedLeftMotor() {
 /*
  * Returns the value of the right motor computed in computeMotors method.
  *
- * @return right computed motor, in [-127, 127] range.
+ * @return right computed motor, in [-500, 500] range.
  */
 int DifferentialSteering::computedRightMotor() {
     return m_rightMotor;

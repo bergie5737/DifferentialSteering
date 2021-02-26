@@ -1,3 +1,6 @@
+# Changed to accept full range of RC transmitter
+I wam using a Jumper T12 radio for control. On the MCU an NRF2401 transciever decodes the data from the radio. This data is the full range of servo's, i.e. 1000 to 2000. To convert the range of 1000 down to 255 and then back to 1000, seems like a waste of resolution. The change is insignificant and no only one line in teh .cpp file need a change.
+
 # Differential Steering with a single dual axis Joystick in Arduino
 Just a simple arduino library to use differential steering with two motors. The compute is fully based in the [impulseAdventure](https://www.impulseadventure.com/elec/robot-differential-steering.html) code.
 
